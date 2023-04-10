@@ -1,0 +1,34 @@
+{
+
+"manifest_version": 2,
+"name": "Url-Replacer",
+"version": "1.0",
+"icons": {
+  "48": "utennavn.png"
+},
+
+"permissions": [
+  "browserAction",
+  "menus",
+  "storage"
+],
+
+"browser_action": {
+  "default_popup": "dropdown.html",
+  "default_icon": "utennavn.png"
+},
+
+"description": "Replaces all youtube url to piped video and all twitter urls to nitter. Can also choose which instance goes where",
+
+"content_scripts": [
+  {
+    "matches": ["<all_urls>"],
+    "js": ["man_script.js"]
+  }
+],
+
+"background":{
+  "scripts": ["background.js"]
+}
+
+}
