@@ -4,8 +4,8 @@
 // find a better storage solution than local storage
 
 //Default piped instances key: name, value: instance url
-let defaultpipedinstances = {"kavin rocks" : "https://piped.video", "garudalinux" : "https://piped-api.garudalinux.org",
-    "libre kavin rocks" : "https://pipedapi-libre.kavin.rocks", "tokhmi" : "https://piped.tokhmi.xyz"};
+let defaultpipedinstances = {"kavin rocks" : "https://piped.video", "garudalinux" : "https://piped.garudalinux.org",
+    "libre kavin rocks" : "https://piped.video", "tokhmi" : "https://piped.tokhmi.xyz"};
 
 let defaultnitterinstances = {"nitter official" : "https://nitter.net", "nitter lacontrevoie.fr" : "https://nitter.lacontrevoie.fr",
     "nitter 1d4 us": "https://nitter.1d4.us", "nitter kavin rocks" : "https://nitter.kavin.rocks", 
