@@ -8,46 +8,56 @@ function replaceurlpiped(url, links){
         selectedpiped = result;
         browser.storage.local.get("pipedinstances").then(result => {
             instances = result;
-            console.log("Here");
-            console.log(url);
             let newurl = url.replace("https://www.youtube.com", instances.pipedinstances[selectedpiped.pipedselected]);
             
             links.setAttribute("href", newurl);
         })});
 }
 
+function replacednitter(url, links){
+    browser.storage.local.get("nitterselected").then(result => { //redo the browser storage get
+        selectednitter = result;
+        browser.storage.local.get("nitterinstances").then(result => {
+            instances = result;
+            let newurl = url.replace("https://www.twitter.com", instances.nitterinstances[selectednitter.nitterselected]);
+            
+            links.setAttribute("href", newurl);
+        })});
+}
+
+function replaceteddit(url, links){
+    browser.storage.local.get("tedditselected").then(result => { //redo the browser storage get
+        selectedteddit = result;
+        browser.storage.local.get("tedditinstances").then(result => {
+            instances = result;
+            let newurl = url.replace("https://www.reddit.com", instances.tedditinstances[selectedteddit.tedditselected]);
+            
+            links.setAttribute("href", newurl);
+        })});
+}
+
+
+
 
 console.log(links);
-// deal with www and not 
 if(links.length != 0){
     
     for (let i = 0; i < links.length; i++) {
-        console.log(links[i].href.includes("https://www.youtube.com"));
+
         if(links[i].href != null && links[i].href.includes("https://www.youtube.com")){
-            console.log("hello");
             let url = links[i].getAttribute('href');
-            // datalink for duckduckgo
-            newurl = replaceurlpiped(url, links[i]);
+            replaceurlpiped(url, links[i]);
         }
-        // if(links[i].getAttribute('href').includes("https://twitter.com")){
-        //     selectednitter = browser.storage.local.get("nitterselected");
-        //     instances = browser.storage.local.get("nitterinstances");
+        
+        if(links[i].href != null && links[i].getAttribute('href').includes("https://www.twitter.com")){
+            let url = links[i].getAttribute('href');
+            replacednitter(url, links[i]);
+        }
 
-        //     let url = links[i].href;
-        //     let newurl = url.replace("https://twitter.com", instances.nitterinstances[selectednitter.nitterselected]);
-
-        //     console.log(newurl);
-        //     links[i].href = newurl;
-        // }
-
-        // if(links[i].getAttribute('href').includes("https://www.reddit.com")){
-        //     selectedteddit = browser.storage.local.get("tedditselected");
-        //     instances = browser.storage.local.get("tedditinstances");
-            
-        //     let url = links[i].href;
-        //     newurl = url.replace("https://www.reddit.com", instances[selectedteddit.tedditselected]);
-        //     links[i].href = newurl;
-        // }
+        if(links[i].getAttribute('href').includes("https://www.reddit.com")){
+            let url = links[i].getAttribute('href');
+            replacednitter(url, links[i]);
+        }
     }
 }
 
